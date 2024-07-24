@@ -1,0 +1,33 @@
+
+.avatar {
+
+    display: flex;
+    width: 64px;
+    height: 64px;
+    justify-content: center;
+    align-items: center;
+
+
+    span {
+        border-radius: 50%;
+        display: flex;
+        border-radius: 50%;
+
+        img {
+            /* 自动调整图片大小以适应容器，可选 */
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 50%;
+        }
+    }
+}
+
+.logo-out {
+    display: block;
+
+    &:hover {
+        background: #f5f5f5 !important;
+        color: #595959;
+        cursor: pointer;
+    }
+}

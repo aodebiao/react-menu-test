@@ -1,70 +1,65 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 使用craco
+## npm i -D @craco/craco
 
-## Available Scripts
+- 如果您希望在配置文件中进行类型检查和 IDE 自动完成，则可以使用该 CRACO 官方类型：
+## npm i -D @craco/types  
 
-In the project directory, you can run:
+## 修改package.json中的启动脚本
 
-### `npm start`
+```
+"scripts": {
+-  "start": "react-scripts start"
++  "start": "craco start"
+-  "build": "react-scripts build"
++  "build": "craco build"
+-  "test": "react-scripts test"
++  "test": "craco test"
+}
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 初始化tsconfig.json文件
+### tsc --init 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## reducer持久化
+### npm i redux-persist
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 如果需要在tsx中引入图片，如下
+> import Logo from '@/assets/img/logo.png'
 
-### `npm run build`
+需要创建`react-app-env.d.ts`文件，内容如下
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+// react-scripts 文件中声明了各种图片模块
+/// <reference types="react-scripts" />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+declare namespace NodeJS {
+    interface ProcessEnv{
+        readonly REACT_APP_BASE_URL:string
+    }
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
 
-### `npm run eject`
+或者
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+/// <reference types="react-scripts" />
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+declare module '*.css'
+declare module '*.less'
+declare module '*.scss'
+declare module '*.svg'
+declare module '*.png'
+declare module '*.jpg'
+declare module '*.jpeg'
+declare module '*.gif'
+declare module '*.bmp'
+declare module '*.tiff'
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## antd 图标
+### npm install @ant-design/icons --save
